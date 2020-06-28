@@ -1,0 +1,813 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="SE_12Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Account">
+          <Key>
+            <PropertyRef Name="ID_Account" />
+          </Key>
+          <Property Name="ID_Account" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="Login" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PassWord" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ID_Type" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="ID_User" Type="nvarchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="ID_Category" />
+          </Key>
+          <Property Name="ID_Category" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="Category_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Detail_Order">
+          <Key>
+            <PropertyRef Name="ID_Order_Detail" />
+          </Key>
+          <Property Name="ID_Order_Detail" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="ID_Items" Type="nvarchar" MaxLength="10" />
+          <Property Name="Price" Type="int" />
+          <Property Name="Amount" Type="nvarchar" MaxLength="50" />
+          <Property Name="Order_Time" Type="date" />
+          <Property Name="ID_Order" Type="nvarchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="Items">
+          <Key>
+            <PropertyRef Name="ID_Items" />
+          </Key>
+          <Property Name="ID_Items" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="Items_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ID_Category" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="Price" Type="int" Nullable="false" />
+          <Property Name="Status" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Reserve" Type="int" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="ID Order" />
+          </Key>
+          <Property Name="ID Order" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="ID Account" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="Time_Order" Type="date" />
+          <Property Name="Proceeds" Type="int" />
+        </EntityType>
+        <EntityType Name="Payment">
+          <Key>
+            <PropertyRef Name="ID Thanh toán" />
+          </Key>
+          <Property Name="ID Thanh toán" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="ID Order" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="Tổng tiền" Type="int" Nullable="false" />
+          <Property Name="Tiền nhận vào" Type="int" Nullable="false" />
+          <Property Name="Tiền thừa" Type="int" Nullable="false" />
+          <Property Name="Thời gian thanh toán" Type="datetime" Nullable="false" />
+          <Property Name="ID Kì hạn" Type="nchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Period">
+          <Key>
+            <PropertyRef Name="ID Kì hạn" />
+          </Key>
+          <Property Name="ID Kì hạn" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="Tên kì hạn" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Thời gian bắt đầu kì hạn" Type="date" Nullable="false" />
+          <Property Name="Thời gian kết thúc kì hạn" Type="date" Nullable="false" />
+          <Property Name="Thời gian chung của kì hạn" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="QL_Payment">
+          <Key>
+            <PropertyRef Name="ID_Oder" />
+          </Key>
+          <Property Name="ID_Oder" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="ID_Account" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="Proceeds" Type="int" />
+          <Property Name="Payment_Time" Type="datetime" />
+        </EntityType>
+        <EntityType Name="QL_WDay">
+          <Key>
+            <PropertyRef Name="ID_WDay" />
+          </Key>
+          <Property Name="ID_WDay" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ID_Account" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="Shift_Start_Time" Type="datetime" />
+          <Property Name="Shift_End_Time" Type="datetime" />
+          <Property Name="Salary_Shift" Type="int" />
+        </EntityType>
+        <EntityType Name="Salary">
+          <Key>
+            <PropertyRef Name="ID_Salary" />
+          </Key>
+          <Property Name="ID_Salary" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="ID_Account" Type="nvarchar" MaxLength="10" />
+          <Property Name="Month" Type="nchar" MaxLength="10" />
+          <Property Name="Salary" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="Type_Account">
+          <Key>
+            <PropertyRef Name="ID Type" />
+          </Key>
+          <Property Name="ID Type" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="Access" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="ID_User" />
+          </Key>
+          <Property Name="ID_User" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="User_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Gender" Type="bit" Nullable="false" />
+          <Property Name="Birthday" Type="date" Nullable="false" />
+          <Property Name="NumberPhone" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Pasport" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Address" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Shift_Time" Type="nvarchar" MaxLength="50" />
+          <Property Name="Salary" Type="int" />
+        </EntityType>
+        <Association Name="FK_Account_Type_Account">
+          <End Role="Type_Account" Type="Self.Type_Account" Multiplicity="1" />
+          <End Role="Account" Type="Self.Account" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Type_Account">
+              <PropertyRef Name="ID Type" />
+            </Principal>
+            <Dependent Role="Account">
+              <PropertyRef Name="ID_Type" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Account_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Account" Type="Self.Account" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID_User" />
+            </Principal>
+            <Dependent Role="Account">
+              <PropertyRef Name="ID_User" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Detail_Order_Items">
+          <End Role="Items" Type="Self.Items" Multiplicity="0..1" />
+          <End Role="Detail_Order" Type="Self.Detail_Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Items">
+              <PropertyRef Name="ID_Items" />
+            </Principal>
+            <Dependent Role="Detail_Order">
+              <PropertyRef Name="ID_Items" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Detail_Order_Oder">
+          <End Role="Order" Type="Self.Order" Multiplicity="0..1" />
+          <End Role="Detail_Order" Type="Self.Detail_Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="ID Order" />
+            </Principal>
+            <Dependent Role="Detail_Order">
+              <PropertyRef Name="ID_Order" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Items_Category">
+          <End Role="Category" Type="Self.Category" Multiplicity="1" />
+          <End Role="Items" Type="Self.Items" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="ID_Category" />
+            </Principal>
+            <Dependent Role="Items">
+              <PropertyRef Name="ID_Category" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_Account">
+          <End Role="Account" Type="Self.Account" Multiplicity="1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Account">
+              <PropertyRef Name="ID_Account" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="ID Account" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_QL_Payment">
+          <End Role="QL_Payment" Type="Self.QL_Payment" Multiplicity="1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="QL_Payment">
+              <PropertyRef Name="ID_Oder" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="ID Order" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Payment_Oder">
+          <End Role="Order" Type="Self.Order" Multiplicity="1" />
+          <End Role="Payment" Type="Self.Payment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="ID Order" />
+            </Principal>
+            <Dependent Role="Payment">
+              <PropertyRef Name="ID Order" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Payment_Period">
+          <End Role="Period" Type="Self.Period" Multiplicity="1" />
+          <End Role="Payment" Type="Self.Payment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Period">
+              <PropertyRef Name="ID Kì hạn" />
+            </Principal>
+            <Dependent Role="Payment">
+              <PropertyRef Name="ID Kì hạn" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_QL_WDay_Account">
+          <End Role="Account" Type="Self.Account" Multiplicity="1" />
+          <End Role="QL_WDay" Type="Self.QL_WDay" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Account">
+              <PropertyRef Name="ID_Account" />
+            </Principal>
+            <Dependent Role="QL_WDay">
+              <PropertyRef Name="ID_Account" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Salary_Account">
+          <End Role="Account" Type="Self.Account" Multiplicity="0..1" />
+          <End Role="Salary" Type="Self.Salary" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Account">
+              <PropertyRef Name="ID_Account" />
+            </Principal>
+            <Dependent Role="Salary">
+              <PropertyRef Name="ID_Account" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SE_12ModelStoreContainer">
+          <EntitySet Name="Account" EntityType="Self.Account" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Detail_Order" EntityType="Self.Detail_Order" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Items" EntityType="Self.Items" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Order" EntityType="Self.Order" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Payment" EntityType="Self.Payment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Period" EntityType="Self.Period" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="QL_Payment" EntityType="Self.QL_Payment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="QL_WDay" EntityType="Self.QL_WDay" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Salary" EntityType="Self.Salary" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Type_Account" EntityType="Self.Type_Account" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Account_Type_Account" Association="Self.FK_Account_Type_Account">
+            <End Role="Type_Account" EntitySet="Type_Account" />
+            <End Role="Account" EntitySet="Account" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Account_User" Association="Self.FK_Account_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Account" EntitySet="Account" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Detail_Order_Items" Association="Self.FK_Detail_Order_Items">
+            <End Role="Items" EntitySet="Items" />
+            <End Role="Detail_Order" EntitySet="Detail_Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Detail_Order_Oder" Association="Self.FK_Detail_Order_Oder">
+            <End Role="Order" EntitySet="Order" />
+            <End Role="Detail_Order" EntitySet="Detail_Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Items_Category" Association="Self.FK_Items_Category">
+            <End Role="Category" EntitySet="Category" />
+            <End Role="Items" EntitySet="Items" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_Account" Association="Self.FK_Order_Account">
+            <End Role="Account" EntitySet="Account" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_QL_Payment" Association="Self.FK_Order_QL_Payment">
+            <End Role="QL_Payment" EntitySet="QL_Payment" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Payment_Oder" Association="Self.FK_Payment_Oder">
+            <End Role="Order" EntitySet="Order" />
+            <End Role="Payment" EntitySet="Payment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Payment_Period" Association="Self.FK_Payment_Period">
+            <End Role="Period" EntitySet="Period" />
+            <End Role="Payment" EntitySet="Payment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_QL_WDay_Account" Association="Self.FK_QL_WDay_Account">
+            <End Role="Account" EntitySet="Account" />
+            <End Role="QL_WDay" EntitySet="QL_WDay" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Salary_Account" Association="Self.FK_Salary_Account">
+            <End Role="Account" EntitySet="Account" />
+            <End Role="Salary" EntitySet="Salary" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SE_12Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Account">
+          <Key>
+            <PropertyRef Name="ID_Account" />
+          </Key>
+          <Property Name="ID_Account" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PassWord" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ID_Type" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ID_User" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Type_Account" Relationship="Self.FK_Account_Type_Account" FromRole="Account" ToRole="Type_Account" />
+          <NavigationProperty Name="User" Relationship="Self.FK_Account_User" FromRole="Account" ToRole="User" />
+          <NavigationProperty Name="Orders" Relationship="Self.FK_Order_Account" FromRole="Account" ToRole="Order" />
+          <NavigationProperty Name="QL_WDay" Relationship="Self.FK_QL_WDay_Account" FromRole="Account" ToRole="QL_WDay" />
+          <NavigationProperty Name="Salaries" Relationship="Self.FK_Salary_Account" FromRole="Account" ToRole="Salary" />
+        </EntityType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="ID_Category" />
+          </Key>
+          <Property Name="ID_Category" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Category_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Items" Relationship="Self.FK_Items_Category" FromRole="Category" ToRole="Items" />
+        </EntityType>
+        <EntityType Name="Detail_Order">
+          <Key>
+            <PropertyRef Name="ID_Order_Detail" />
+          </Key>
+          <Property Name="ID_Order_Detail" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ID_Items" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Price" Type="Int32" />
+          <Property Name="Amount" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Order_Time" Type="DateTime" Precision="0" />
+          <Property Name="ID_Order" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Item" Relationship="Self.FK_Detail_Order_Items" FromRole="Detail_Order" ToRole="Items" />
+          <NavigationProperty Name="Order" Relationship="Self.FK_Detail_Order_Oder" FromRole="Detail_Order" ToRole="Order" />
+        </EntityType>
+        <EntityType Name="Item">
+          <Key>
+            <PropertyRef Name="ID_Items" />
+          </Key>
+          <Property Name="ID_Items" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Items_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ID_Category" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Price" Type="Int32" Nullable="false" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Reserve" Type="Int32" />
+          <NavigationProperty Name="Category" Relationship="Self.FK_Items_Category" FromRole="Items" ToRole="Category" />
+          <NavigationProperty Name="Detail_Order" Relationship="Self.FK_Detail_Order_Items" FromRole="Items" ToRole="Detail_Order" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="ID_Order" />
+          </Key>
+          <Property Name="ID_Order" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ID_Account" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Time_Order" Type="DateTime" Precision="0" />
+          <Property Name="Proceeds" Type="Int32" />
+          <NavigationProperty Name="Account" Relationship="Self.FK_Order_Account" FromRole="Order" ToRole="Account" />
+          <NavigationProperty Name="Detail_Order" Relationship="Self.FK_Detail_Order_Oder" FromRole="Order" ToRole="Detail_Order" />
+          <NavigationProperty Name="QL_Payment" Relationship="Self.FK_Order_QL_Payment" FromRole="Order" ToRole="QL_Payment" />
+          <NavigationProperty Name="Payments" Relationship="Self.FK_Payment_Oder" FromRole="Order" ToRole="Payment" />
+        </EntityType>
+        <EntityType Name="Payment">
+          <Key>
+            <PropertyRef Name="ID_Thanh_toán" />
+          </Key>
+          <Property Name="ID_Thanh_toán" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="ID_Order" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Tổng_tiền" Type="Int32" Nullable="false" />
+          <Property Name="Tiền_nhận_vào" Type="Int32" Nullable="false" />
+          <Property Name="Tiền_thừa" Type="Int32" Nullable="false" />
+          <Property Name="Thời_gian_thanh_toán" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ID_Kì_hạn" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Order" Relationship="Self.FK_Payment_Oder" FromRole="Payment" ToRole="Order" />
+          <NavigationProperty Name="Period" Relationship="Self.FK_Payment_Period" FromRole="Payment" ToRole="Period" />
+        </EntityType>
+        <EntityType Name="Period">
+          <Key>
+            <PropertyRef Name="ID_Kì_hạn" />
+          </Key>
+          <Property Name="ID_Kì_hạn" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Tên_kì_hạn" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Thời_gian_bắt_đầu_kì_hạn" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Thời_gian_kết_thúc_kì_hạn" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Thời_gian_chung_của_kì_hạn" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="Payments" Relationship="Self.FK_Payment_Period" FromRole="Period" ToRole="Payment" />
+        </EntityType>
+        <EntityType Name="QL_Payment">
+          <Key>
+            <PropertyRef Name="ID_Oder" />
+          </Key>
+          <Property Name="ID_Oder" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ID_Account" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Proceeds" Type="Int32" />
+          <Property Name="Payment_Time" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Order" Relationship="Self.FK_Order_QL_Payment" FromRole="QL_Payment" ToRole="Order" />
+        </EntityType>
+        <EntityType Name="QL_WDay">
+          <Key>
+            <PropertyRef Name="ID_WDay" />
+          </Key>
+          <Property Name="ID_WDay" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ID_Account" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Shift_Start_Time" Type="DateTime" Precision="3" />
+          <Property Name="Shift_End_Time" Type="DateTime" Precision="3" />
+          <Property Name="Salary_Shift" Type="Int32" />
+          <NavigationProperty Name="Account" Relationship="Self.FK_QL_WDay_Account" FromRole="QL_WDay" ToRole="Account" />
+        </EntityType>
+        <EntityType Name="Salary">
+          <Key>
+            <PropertyRef Name="ID_Salary" />
+          </Key>
+          <Property Name="ID_Salary" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ID_Account" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Month" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Salary1" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="Account" Relationship="Self.FK_Salary_Account" FromRole="Salary" ToRole="Account" />
+        </EntityType>
+        <EntityType Name="Type_Account">
+          <Key>
+            <PropertyRef Name="ID_Type" />
+          </Key>
+          <Property Name="ID_Type" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Access" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Accounts" Relationship="Self.FK_Account_Type_Account" FromRole="Type_Account" ToRole="Account" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="ID_User" />
+          </Key>
+          <Property Name="ID_User" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="User_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Gender" Type="Boolean" Nullable="false" />
+          <Property Name="Birthday" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="NumberPhone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Pasport" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Shift_Time" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Salary" Type="Int32" />
+          <NavigationProperty Name="Accounts" Relationship="Self.FK_Account_User" FromRole="User" ToRole="Account" />
+        </EntityType>
+        <Association Name="FK_Account_Type_Account">
+          <End Role="Type_Account" Type="Self.Type_Account" Multiplicity="1" />
+          <End Role="Account" Type="Self.Account" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Type_Account">
+              <PropertyRef Name="ID_Type" />
+            </Principal>
+            <Dependent Role="Account">
+              <PropertyRef Name="ID_Type" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Account_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Account" Type="Self.Account" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID_User" />
+            </Principal>
+            <Dependent Role="Account">
+              <PropertyRef Name="ID_User" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_Account">
+          <End Role="Account" Type="Self.Account" Multiplicity="1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Account">
+              <PropertyRef Name="ID_Account" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="ID_Account" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_QL_WDay_Account">
+          <End Role="Account" Type="Self.Account" Multiplicity="1" />
+          <End Role="QL_WDay" Type="Self.QL_WDay" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Account">
+              <PropertyRef Name="ID_Account" />
+            </Principal>
+            <Dependent Role="QL_WDay">
+              <PropertyRef Name="ID_Account" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Salary_Account">
+          <End Role="Account" Type="Self.Account" Multiplicity="0..1" />
+          <End Role="Salary" Type="Self.Salary" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Account">
+              <PropertyRef Name="ID_Account" />
+            </Principal>
+            <Dependent Role="Salary">
+              <PropertyRef Name="ID_Account" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Items_Category">
+          <End Role="Category" Type="Self.Category" Multiplicity="1" />
+          <End Role="Items" Type="Self.Item" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="ID_Category" />
+            </Principal>
+            <Dependent Role="Items">
+              <PropertyRef Name="ID_Category" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Detail_Order_Items">
+          <End Role="Items" Type="Self.Item" Multiplicity="0..1" />
+          <End Role="Detail_Order" Type="Self.Detail_Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Items">
+              <PropertyRef Name="ID_Items" />
+            </Principal>
+            <Dependent Role="Detail_Order">
+              <PropertyRef Name="ID_Items" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Detail_Order_Oder">
+          <End Role="Order" Type="Self.Order" Multiplicity="0..1" />
+          <End Role="Detail_Order" Type="Self.Detail_Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="ID_Order" />
+            </Principal>
+            <Dependent Role="Detail_Order">
+              <PropertyRef Name="ID_Order" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_QL_Payment">
+          <End Role="QL_Payment" Type="Self.QL_Payment" Multiplicity="1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="QL_Payment">
+              <PropertyRef Name="ID_Oder" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="ID_Order" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Payment_Oder">
+          <End Role="Order" Type="Self.Order" Multiplicity="1" />
+          <End Role="Payment" Type="Self.Payment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="ID_Order" />
+            </Principal>
+            <Dependent Role="Payment">
+              <PropertyRef Name="ID_Order" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Payment_Period">
+          <End Role="Period" Type="Self.Period" Multiplicity="1" />
+          <End Role="Payment" Type="Self.Payment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Period">
+              <PropertyRef Name="ID_Kì_hạn" />
+            </Principal>
+            <Dependent Role="Payment">
+              <PropertyRef Name="ID_Kì_hạn" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SE_12Entities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Accounts" EntityType="Self.Account" />
+          <EntitySet Name="Categories" EntityType="Self.Category" />
+          <EntitySet Name="Detail_Order" EntityType="Self.Detail_Order" />
+          <EntitySet Name="Items" EntityType="Self.Item" />
+          <EntitySet Name="Orders" EntityType="Self.Order" />
+          <EntitySet Name="Payments" EntityType="Self.Payment" />
+          <EntitySet Name="Periods" EntityType="Self.Period" />
+          <EntitySet Name="QL_Payment" EntityType="Self.QL_Payment" />
+          <EntitySet Name="QL_WDay" EntityType="Self.QL_WDay" />
+          <EntitySet Name="Salaries" EntityType="Self.Salary" />
+          <EntitySet Name="Type_Account" EntityType="Self.Type_Account" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <AssociationSet Name="FK_Account_Type_Account" Association="Self.FK_Account_Type_Account">
+            <End Role="Type_Account" EntitySet="Type_Account" />
+            <End Role="Account" EntitySet="Accounts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Account_User" Association="Self.FK_Account_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Account" EntitySet="Accounts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_Account" Association="Self.FK_Order_Account">
+            <End Role="Account" EntitySet="Accounts" />
+            <End Role="Order" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_QL_WDay_Account" Association="Self.FK_QL_WDay_Account">
+            <End Role="Account" EntitySet="Accounts" />
+            <End Role="QL_WDay" EntitySet="QL_WDay" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Salary_Account" Association="Self.FK_Salary_Account">
+            <End Role="Account" EntitySet="Accounts" />
+            <End Role="Salary" EntitySet="Salaries" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Items_Category" Association="Self.FK_Items_Category">
+            <End Role="Category" EntitySet="Categories" />
+            <End Role="Items" EntitySet="Items" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Detail_Order_Items" Association="Self.FK_Detail_Order_Items">
+            <End Role="Items" EntitySet="Items" />
+            <End Role="Detail_Order" EntitySet="Detail_Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Detail_Order_Oder" Association="Self.FK_Detail_Order_Oder">
+            <End Role="Order" EntitySet="Orders" />
+            <End Role="Detail_Order" EntitySet="Detail_Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_QL_Payment" Association="Self.FK_Order_QL_Payment">
+            <End Role="QL_Payment" EntitySet="QL_Payment" />
+            <End Role="Order" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Payment_Oder" Association="Self.FK_Payment_Oder">
+            <End Role="Order" EntitySet="Orders" />
+            <End Role="Payment" EntitySet="Payments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Payment_Period" Association="Self.FK_Payment_Period">
+            <End Role="Period" EntitySet="Periods" />
+            <End Role="Payment" EntitySet="Payments" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SE_12ModelStoreContainer" CdmEntityContainer="SE_12Entities1">
+          <EntitySetMapping Name="Accounts">
+            <EntityTypeMapping TypeName="SE_12Model.Account">
+              <MappingFragment StoreEntitySet="Account">
+                <ScalarProperty Name="ID_Account" ColumnName="ID_Account" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="PassWord" ColumnName="PassWord" />
+                <ScalarProperty Name="ID_Type" ColumnName="ID_Type" />
+                <ScalarProperty Name="ID_User" ColumnName="ID_User" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Categories">
+            <EntityTypeMapping TypeName="SE_12Model.Category">
+              <MappingFragment StoreEntitySet="Category">
+                <ScalarProperty Name="ID_Category" ColumnName="ID_Category" />
+                <ScalarProperty Name="Category_Name" ColumnName="Category_Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Detail_Order">
+            <EntityTypeMapping TypeName="SE_12Model.Detail_Order">
+              <MappingFragment StoreEntitySet="Detail_Order">
+                <ScalarProperty Name="ID_Order_Detail" ColumnName="ID_Order_Detail" />
+                <ScalarProperty Name="ID_Items" ColumnName="ID_Items" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="Order_Time" ColumnName="Order_Time" />
+                <ScalarProperty Name="ID_Order" ColumnName="ID_Order" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Items">
+            <EntityTypeMapping TypeName="SE_12Model.Item">
+              <MappingFragment StoreEntitySet="Items">
+                <ScalarProperty Name="ID_Items" ColumnName="ID_Items" />
+                <ScalarProperty Name="Items_Name" ColumnName="Items_Name" />
+                <ScalarProperty Name="ID_Category" ColumnName="ID_Category" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Reserve" ColumnName="Reserve" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Orders">
+            <EntityTypeMapping TypeName="SE_12Model.Order">
+              <MappingFragment StoreEntitySet="Order">
+                <ScalarProperty Name="ID_Order" ColumnName="ID Order" />
+                <ScalarProperty Name="ID_Account" ColumnName="ID Account" />
+                <ScalarProperty Name="Time_Order" ColumnName="Time_Order" />
+                <ScalarProperty Name="Proceeds" ColumnName="Proceeds" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Payments">
+            <EntityTypeMapping TypeName="SE_12Model.Payment">
+              <MappingFragment StoreEntitySet="Payment">
+                <ScalarProperty Name="ID_Thanh_toán" ColumnName="ID Thanh toán" />
+                <ScalarProperty Name="ID_Order" ColumnName="ID Order" />
+                <ScalarProperty Name="Tổng_tiền" ColumnName="Tổng tiền" />
+                <ScalarProperty Name="Tiền_nhận_vào" ColumnName="Tiền nhận vào" />
+                <ScalarProperty Name="Tiền_thừa" ColumnName="Tiền thừa" />
+                <ScalarProperty Name="Thời_gian_thanh_toán" ColumnName="Thời gian thanh toán" />
+                <ScalarProperty Name="ID_Kì_hạn" ColumnName="ID Kì hạn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Periods">
+            <EntityTypeMapping TypeName="SE_12Model.Period">
+              <MappingFragment StoreEntitySet="Period">
+                <ScalarProperty Name="ID_Kì_hạn" ColumnName="ID Kì hạn" />
+                <ScalarProperty Name="Tên_kì_hạn" ColumnName="Tên kì hạn" />
+                <ScalarProperty Name="Thời_gian_bắt_đầu_kì_hạn" ColumnName="Thời gian bắt đầu kì hạn" />
+                <ScalarProperty Name="Thời_gian_kết_thúc_kì_hạn" ColumnName="Thời gian kết thúc kì hạn" />
+                <ScalarProperty Name="Thời_gian_chung_của_kì_hạn" ColumnName="Thời gian chung của kì hạn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="QL_Payment">
+            <EntityTypeMapping TypeName="SE_12Model.QL_Payment">
+              <MappingFragment StoreEntitySet="QL_Payment">
+                <ScalarProperty Name="ID_Oder" ColumnName="ID_Oder" />
+                <ScalarProperty Name="ID_Account" ColumnName="ID_Account" />
+                <ScalarProperty Name="Proceeds" ColumnName="Proceeds" />
+                <ScalarProperty Name="Payment_Time" ColumnName="Payment_Time" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="QL_WDay">
+            <EntityTypeMapping TypeName="SE_12Model.QL_WDay">
+              <MappingFragment StoreEntitySet="QL_WDay">
+                <ScalarProperty Name="ID_WDay" ColumnName="ID_WDay" />
+                <ScalarProperty Name="ID_Account" ColumnName="ID_Account" />
+                <ScalarProperty Name="Shift_Start_Time" ColumnName="Shift_Start_Time" />
+                <ScalarProperty Name="Shift_End_Time" ColumnName="Shift_End_Time" />
+                <ScalarProperty Name="Salary_Shift" ColumnName="Salary_Shift" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Salaries">
+            <EntityTypeMapping TypeName="SE_12Model.Salary">
+              <MappingFragment StoreEntitySet="Salary">
+                <ScalarProperty Name="ID_Salary" ColumnName="ID_Salary" />
+                <ScalarProperty Name="ID_Account" ColumnName="ID_Account" />
+                <ScalarProperty Name="Month" ColumnName="Month" />
+                <ScalarProperty Name="Salary1" ColumnName="Salary" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Type_Account">
+            <EntityTypeMapping TypeName="SE_12Model.Type_Account">
+              <MappingFragment StoreEntitySet="Type_Account">
+                <ScalarProperty Name="ID_Type" ColumnName="ID Type" />
+                <ScalarProperty Name="Access" ColumnName="Access" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="SE_12Model.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="ID_User" ColumnName="ID_User" />
+                <ScalarProperty Name="User_Name" ColumnName="User_Name" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Birthday" ColumnName="Birthday" />
+                <ScalarProperty Name="NumberPhone" ColumnName="NumberPhone" />
+                <ScalarProperty Name="Pasport" ColumnName="Pasport" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Shift_Time" ColumnName="Shift_Time" />
+                <ScalarProperty Name="Salary" ColumnName="Salary" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

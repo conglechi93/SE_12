@@ -1,0 +1,363 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{F1EBF2F4-EDE8-411E-933C-DFE38EFD3179}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>GiaoDien</RootNamespace>
+    <AssemblyName>GiaoDien</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BLL\Login_BLL.cs" />
+    <Compile Include="BLL\QL_Account_BLL.cs" />
+    <Compile Include="BLL\QL_Items_BLL.cs" />
+    <Compile Include="BLL\QL_User_BLL.cs" />
+    <Compile Include="DTO\Account.cs">
+      <DependentUpon>DB_SE12.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DTO\Category.cs">
+      <DependentUpon>DB_SE12.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DTO\cbb_Ctg.cs" />
+    <Compile Include="DTO\data_Oder.cs" />
+    <Compile Include="DTO\DB_SE12.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DB_SE12.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DTO\DB_SE12.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DB_SE12.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DTO\DB_SE12.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DB_SE12.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="DTO\Detail_Order.cs">
+      <DependentUpon>DB_SE12.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DTO\Item.cs">
+      <DependentUpon>DB_SE12.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DTO\Order.cs">
+      <DependentUpon>DB_SE12.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DTO\Payment.cs">
+      <DependentUpon>DB_SE12.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DTO\Period.cs">
+      <DependentUpon>DB_SE12.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DTO\QL_Payment.cs">
+      <DependentUpon>DB_SE12.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DTO\QL_WDay.cs">
+      <DependentUpon>DB_SE12.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DTO\Salary.cs">
+      <DependentUpon>DB_SE12.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DTO\Type_Account.cs">
+      <DependentUpon>DB_SE12.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DTO\User.cs">
+      <DependentUpon>DB_SE12.tt</DependentUpon>
+    </Compile>
+    <Compile Include="View\AJob.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\AJob.Designer.cs">
+      <DependentUpon>AJob.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\AU_Category.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\AU_Category.Designer.cs">
+      <DependentUpon>AU_Category.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\AU_Items.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\AU_Items.Designer.cs">
+      <DependentUpon>AU_Items.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Bill.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Bill.Designer.cs">
+      <DependentUpon>Bill.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Cons.cs" />
+    <Compile Include="View\DailyPlan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\DailyPlan.Designer.cs">
+      <DependentUpon>DailyPlan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\CheckPoint.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\CheckPoint.Designer.cs">
+      <DependentUpon>CheckPoint.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\FB_Manager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\FB_Manager.Designer.cs">
+      <DependentUpon>FB_Manager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\FB_User.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\FB_User.Designer.cs">
+      <DependentUpon>FB_User.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Login.Designer.cs">
+      <DependentUpon>Login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\FormManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\FormManager.Designer.cs">
+      <DependentUpon>FormManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Account_Manager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Account_Manager.Designer.cs">
+      <DependentUpon>Account_Manager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="View\Main.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Main.Designer.cs">
+      <DependentUpon>Main.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\QL_Items.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\QL_Items.Designer.cs">
+      <DependentUpon>QL_Items.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\QL_User.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\QL_User.Designer.cs">
+      <DependentUpon>QL_User.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\QuanLyBill.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\QuanLyBill.Designer.cs">
+      <DependentUpon>QuanLyBill.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\ChangePass.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\ChangePass.Designer.cs">
+      <DependentUpon>ChangePass.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\User_Detail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\User_Detail.Designer.cs">
+      <DependentUpon>User_Detail.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="View\AJob.resx">
+      <DependentUpon>AJob.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\AU_Category.resx">
+      <DependentUpon>AU_Category.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\AU_Items.resx">
+      <DependentUpon>AU_Items.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Bill.resx">
+      <DependentUpon>Bill.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\DailyPlan.resx">
+      <DependentUpon>DailyPlan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\FB_Manager.resx">
+      <DependentUpon>FB_Manager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Login.resx">
+      <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\FormManager.resx">
+      <DependentUpon>FormManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Account_Manager.resx">
+      <DependentUpon>Account_Manager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Main.resx">
+      <DependentUpon>Main.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\QL_Items.resx">
+      <DependentUpon>QL_Items.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\QL_User.resx">
+      <DependentUpon>QL_User.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\QuanLyBill.resx">
+      <DependentUpon>QuanLyBill.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\ChangePass.resx">
+      <DependentUpon>ChangePass.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\User_Detail.resx">
+      <DependentUpon>User_Detail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EntityDeploy Include="DTO\DB_SE12.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>DB_SE12.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="DTO\DB_SE12.edmx.diagram">
+      <DependentUpon>DB_SE12.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\print.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\setup.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\setup1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\print1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\setup2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\unlocking-solid-512.png" />
+    <None Include="Resources\Picture1.png" />
+    <None Include="Resources\money.png" />
+    <None Include="Resources\items.png" />
+    <None Include="Resources\dash.png" />
+    <None Include="Resources\dash1.png" />
+    <None Include="Resources\dash2.png" />
+    <None Include="Resources\dash3.png" />
+    <None Include="Resources\dash4.png" />
+    <None Include="Resources\a8cfd15e1634174251a7db414cd898ad.png" />
+    <None Include="Resources\kisspng-computer-icons-user-login-swiggy-5b24290687ba18.607449081529096454556.jpg" />
+    <None Include="Resources\149-1492805_cyber-security-icon-png-lock-icon.png" />
+    <None Include="Resources\32.jpg" />
+    <None Include="Resources\31.png" />
+    <None Include="Resources\1673088-XYLBCRVG-7.jpg" />
+    <None Include="Resources\bakery-black-and-white-2.jpg" />
+    <None Include="Resources\302-3026464_png-file-svg-login-member-icon-png.png" />
+    <None Include="Resources\logo.jpg" />
+    <None Include="Resources\5e8d2205ecc8cde3235581fc5ecfa430-email-outline-icon.png" />
+    <None Include="Resources\602.5-send-message-icon-iconbunny.jpg" />
+    <None Include="Resources\325-3256269_packaging-white-icon-png-png-download-packaging-black.png" />
+    <None Include="Resources\23.png" />
+    <None Include="Resources\99.png" />
+    <None Include="Resources\98.png" />
+    <None Include="Resources\97.png" />
+    <None Include="Resources\images.jpg" />
+    <None Include="Resources\96.jpg" />
+    <Content Include="DTO\DB_SE12.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DB_SE12.edmx</DependentUpon>
+      <LastGenOutput>DB_SE12.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="DTO\DB_SE12.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DB_SE12.edmx</DependentUpon>
+      <LastGenOutput>DB_SE12.cs</LastGenOutput>
+    </Content>
+    <Content Include="Resources\p1 - Copy.png" />
+    <None Include="Resources\person2.png" />
+    <None Include="Resources\pngtree-icon-icon-button-small-icon-commercial-element-elementalarm-clocktime-png-image_577918.jpg" />
+    <None Include="Resources\print2.png" />
+    <None Include="Resources\person1.png" />
+    <None Include="Resources\person.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="New\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
